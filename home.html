@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Recommendation System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="video-background">
+        <video autoplay muted loop id="background-video">
+            <source src="path.mp4" type="video/mp4"> <!-- Default video -->
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div class="content">
+        <h1 style="color:#fe21bc">Welcome to the Course Recommendation System!</h1>
+        <div id="questions" style="display: none;">
+            <h2 style="color:#7c3382" >Answer These Questions</h2>
+            <div id="question-container"></div>
+            <button class="custom-btn btn-15" id="submit-answers">Submit Answers</button>
+        </div>
+        <button class="custom-btn btn-15" id="start-quiz">Start Quiz</button>
+    </div>
+
+    <script src="home.js"></script>
+</body>
+</html>

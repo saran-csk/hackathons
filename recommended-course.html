@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommended Course</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link your CSS if you have styles -->
+</head>
+<body>
+    
+    <div class="video-background">
+        <video autoplay muted loop>
+            <source src="path.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div class="content">
+        <h1>Your Recommended Course</h1>
+        <p id="course-display"></p>
+        <div id="links-display"></div> <!-- Container for the links -->
+        <button id="back-button">Go Back</button>
+    </div>
+
+    <script>
+        // Define the links for each course
+        const links = {
+            1: {
+                video: "https://www.youtube.com/watch?v=gDZ6czwuQ18",
+                course: "https://www.coursera.org/specializations/introduction-data-science"
+            },
+            2: {
+                video: "https://www.youtube.com/watch?v=5NgNicANyqM&t=1s",
+                course: "https://www.coursera.org/learn/ai-for-everyone"
+            },
+            3: {
+                video: "https://www.youtube.com/playlist?list=PLEiEAq2VkUUJfeP9bgWAEs-NbGJyYXc-v",
+                course: "https://www.coursera.org/professional-certificates/ibm-full-stack-cloud-developer?"
+            },
+            4: {video:"https://www.youtube.com/watch?v=hXSFdwIOfnE", course: "https://www.coursera.org/learn/cybersecurity-for-everyone"},
+    5: {video:"https://www.youtube.com/watch?v=W41F-IdjPlU",course:  "https://skillshop.exceedlms.com/student/collection/654330-digital-marketing?locale=en-GB"},
+    6: {video:"https://www.youtube.com/watch?v=cGQHXmCS94M",course:  "https://www.coursera.org/specializations/blockchain"},
+    7: {video:"https://www.youtube.com/watch?v=2LaAJq1lB1Q", course: "https://www.coursera.org/learn/introduction-to-cloud"},
+    8: {video:"https://www.youtube.com/watch?v=qDHnCFMZ9HA&t=2s",course:  "https://www.udemy.com/course/video-editing-101-learn-the-basics-of-video-editing/"},
+    9: {video:"https://www.youtube.com/watch?v=zLaOpZrLg70",course:  "https://www.udemy.com/course/online-business-hacks-ecommerce/"},
+    10: {video:"https://www.youtube.com/watch?v=EJHPltmAULA",course:  "https://www.edx.org/learn/financial-accounting/massachusetts-institute-of-technology-financial-accounting?utm_medium=partner-marketing&utm_source=sem&utm_campaign=mitx&utm_term=introduction%20to%20financial%20accounting&utm_content=mm-fin-fl24-aw-c&gad_source=1&gclid=Cj0KCQjwjY64BhCaARIsAIfc7YbruRqjGWXR-UmX3v5-_A7b9I1HwIIfm2IKz9QPWFWHrQCUEZMJ-UYaAlzaEALw_wcB"},
+    11: {video:"https://www.youtube.com/watch?v=xZDB1naRUlk",course:  "https://www.udemy.com/course/build-ranking-system-stock-market-pro-chatbot-using-aiml/"},
+    12: {video:"https://www.youtube.com/watch?v=mEsleV16qdo",course:  "https://www.udemy.com/course/a-gentle-introduction-to-generative-ai/"},
+    13: {video:"https://www.youtube.com/watch?v=HXV3zeQKqGY",course:  "https://www.udemy.com/course/unity-mysql-database-management/"},
+     14: {video:"https://www.youtube.com/watch?v=T0oO_-JlOdA", course: "https://www.coursera.org/enroll/google-project -management/paidmedia?utm_medium=sem&utm_source=gg&utm_campaign=b2c_india_google-project-management_google_ftcof_professional-certificates_arte_apr-24_dr_pmax_gads_lg-all&campaignid=21154881336&adgroupid=&device=c&keyword=&matchtype=&network=x&devicemodel=&adposition=&creativeid=&hide_mobile_promo&gad_source=1&gclid=Cj0KCQjwjY64BhCaARIsAIfc7YaBAat_SQf-KcEai4NZK-FCcPm-DuB25vttWy49s3bsGEK18-gJf2IaArcdEALw_wcB"},
+    15: {video:"https://www.youtube.com/watch?v=BU_afT-aIn0", course: "https://www.coursera.org/professional-certificates/ux-design?utm_medium=sem&utm_source=gg&utm_campaign=b2c_india_ux-design_microsoft_ftcof_professional-certificates_arte_july-24_dr_sem_rsa_gads_lg-all&campaignid=21462595620&adgroupid=168648486670&device=c&keyword=courses%20for%20ux%20design&matchtype=p&network=g&devicemodel=&adposition=&creativeid=705748735569&hide_mobile_promo&gad_source=1&gclid=Cj0KCQjwjY64BhCaARIsAIfc7YZExpkLw_QYqyJN1iM7GWgMupncdkBUnRVm5mnA0hwn8ACX7jXXyQ4aAof_EALw_wcB"},
+    16: {video:"https://www.youtube.com/playlist?list=PL_qYi3X0_AN5IFMFTvQhwVQpKeWEruDIN",course:  "https://alison.com/course/diploma-in-automotive-systems-training"},
+    17: {video:"https://www.youtube.com/playlist?list=PLBh8phtAyHPUY9fqgs1w6aHJALJ3_fMSc",course:  "https://www.coursera.org/specializations/game-design-and-development"},
+    18: {video:"https://www.youtube.com/watch?v=hQcFE0RD0cQ&t=4s", course: "https://www.coursera.org/learn/intro-to-devops"},
+    19: {video:"https://www.youtube.com/watch?v=VPvVD8t02U8",course:  "https://www.coursera.org/professional-certificates/meta-android-developer"},
+           
+            20: {
+                video: "https://www.youtube.com/watch?v=ZxKM3DCV2kE",
+                course: "https://www.coursera.org/specializations/html-css-javascript-for-web-developers"
+            }
+        };
+
+        // Get the recommended course from local storage
+        const recommendedCourseId = localStorage.getItem('recommendedCourse'); // Assuming this is the course ID (1 to 20)
+        
+        // Display the recommended course
+        document.getElementById('course-display').textContent = recommendedCourseId ? `Course ${recommendedCourseId}` : 'No course recommended.';
+
+        // Check if there's a valid recommended course
+        if (recommendedCourseId && links[recommendedCourseId]) {
+            const linkData = links[recommendedCourseId];
+            const linksDisplay = document.getElementById('links-display');
+
+            // Create and append video link
+            const videoLink = document.createElement('a');
+            videoLink.href = linkData.video;
+            videoLink.target = "_blank"; // Open in new tab
+            videoLink.textContent = "Watch Course Video";
+            linksDisplay.appendChild(videoLink);
+
+            // Create and append course link
+            const courseLink = document.createElement('a');
+            courseLink.href = linkData.course;
+            courseLink.target = "_blank"; // Open in new tab
+            courseLink.textContent = "Enroll in Course";
+            linksDisplay.appendChild(courseLink);
+        }
+
+        // Add event listener for the back button
+        document.getElementById('back-button').addEventListener('click', function() {
+            window.location.href = 'index.html'; // Change to your previous page if different
+        });
+    </script>
+</body>
+</html>
